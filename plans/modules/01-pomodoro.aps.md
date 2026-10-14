@@ -10,7 +10,7 @@ ID: POM
 | --- | -------- | ------ |
 | POM | @roostaa | Complete |
 
-## Goal
+## Purpose
 
 A minimal browser-based pomodoro timer: 25-minute focus intervals, 5-minute
 breaks, with controls and a served webpage.
