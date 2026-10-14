@@ -8,7 +8,7 @@ ID: POM
 
 | ID  | Owner    | Status |
 | --- | -------- | ------ |
-| POM | @roostaa | In Progress |
+| POM | @roostaa | Complete |
 
 **Last reviewed:** 2026-10-14
 
@@ -87,9 +87,10 @@ breaks, with controls and a served webpage.
 
 ### POM-007: Persist chosen durations
 
-- **Status:** Draft
+- **Status:** Complete: 2026-10-14
 - **Intent:** Remember the user's chosen work and break lengths across reloads
 - **Expected Outcome:** The selected durations survive a page reload and are restored on load
 - **Validation:** `python3 -m unittest tests.test_duration_persistence`
+- **Learning:** "Persist durations under one JSON key and restore into the controls on load, mirroring the tally's localStorage pattern so both settings survive reloads"
 - **Dependencies:** POM-006
 - **Non-scope:** Multiple named presets, cross-device sync

@@ -1,4 +1,6 @@
-// UI controller: wires controls, displays time, tallies sessions (POM-002/POM-004/POM-006).
+// UI controller: wires controls, displays time, tallies sessions (POM-002/POM-004/POM-006/POM-007).
+
+const DURATIONS_KEY = "pomodoroDurations";
 
 let state = newState();
 let totalSessions = parseInt(localStorage.getItem("pomodoroSessions") || "0", 10);
@@ -10,10 +12,25 @@ function format(seconds) {
   return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
 }
 
-// Read the chosen work/break minutes from the duration controls.
+// Restore saved durations into the input controls.
+function restoreDurations() {
+  let saved = null;
+  try {
+    saved = JSON.parse(localStorage.getItem(DURATIONS_KEY) || "null");
+  } catch (e) {
+    saved = null;
+  }
+  const work = (saved && saved.work) || 25;
+  const brk = (saved && saved.brk) || 5;
+  document.getElementById("work-minutes").value = String(work);
+  document.getElementById("break-minutes").value = String(brk);
+}
+
+// Read the chosen work/break minutes from the controls and persist them.
 function readDurations() {
   const work = parseInt(document.getElementById("work-minutes").value, 10) || 25;
   const brk = parseInt(document.getElementById("break-minutes").value, 10) || 5;
+  localStorage.setItem(DURATIONS_KEY, JSON.stringify({ work, brk }));
   return { work, brk };
 }
 
@@ -78,4 +95,5 @@ document.getElementById("pause").addEventListener("click", pauseTimer);
 document.getElementById("reset").addEventListener("click", resetTimer);
 
 document.getElementById("sessions").textContent = String(totalSessions);
+restoreDurations();
 render();
