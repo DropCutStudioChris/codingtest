@@ -1,0 +1,22 @@
+# APS init configuration (replay with `aps init --from`)
+cli_version: 0.9.0
+profile: solo
+shape: single
+plans_dir: plans
+docs_dir: docs
+tooling_root: .aps
+templates:
+  - quickstart
+  - index
+components:
+  - lint-rules
+  - aps-rules
+  - project-context
+  - designs-dir
+  - decisions-dir
+  - releases-dir
+tools:
+  - name: opencode
+    agents: true
+    hooks: minimal
+    model: default
