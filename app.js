@@ -3,12 +3,17 @@
 
 const WORK_MINUTES = 25;
 const BREAK_MINUTES = 5;
-const WORK_SECONDS = WORK_MINUTES * 60;
-const BREAK_SECONDS = BREAK_MINUTES * 60;
 
-// Create a fresh timer state.
-function newState() {
-  return { phase: "work", secondsLeft: WORK_SECONDS, completedSessions: 0 };
+// Create a fresh timer state. Callers may supply custom work/break lengths
+// in minutes; omitted arguments fall back to the default 25/5 durations.
+function newState(workMinutes = WORK_MINUTES, breakMinutes = BREAK_MINUTES) {
+  return {
+    phase: "work",
+    secondsLeft: workMinutes * 60,
+    completedSessions: 0,
+    workSeconds: workMinutes * 60,
+    breakSeconds: breakMinutes * 60,
+  };
 }
 
 // Advance one second. Switches phase automatically at zero.
@@ -25,10 +30,10 @@ function switchPhase(state) {
   if (state.phase === "work") {
     state.completedSessions += 1;
     state.phase = "break";
-    state.secondsLeft = BREAK_SECONDS;
+    state.secondsLeft = state.breakSeconds;
   } else {
     state.phase = "work";
-    state.secondsLeft = WORK_SECONDS;
+    state.secondsLeft = state.workSeconds;
   }
   return state;
 }
@@ -36,6 +41,6 @@ function switchPhase(state) {
 // Return to the start of a work interval (keeps the completed-session tally).
 function reset(state) {
   state.phase = "work";
-  state.secondsLeft = WORK_SECONDS;
+  state.secondsLeft = state.workSeconds;
   return state;
 }

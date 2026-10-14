@@ -67,10 +67,11 @@ breaks, with controls and a served webpage.
 
 ### POM-005: Configurable durations in the engine
 
-- **Status:** Draft
+- **Status:** Complete: 2026-10-14
 - **Intent:** Let the countdown engine accept custom work and break lengths instead of fixed constants
 - **Expected Outcome:** The engine creates a timer with caller-supplied work/break durations, defaulting to 25/5 when none are given, and countdowns and phase switches use those durations
 - **Validation:** `python3 -m unittest tests.test_durations`
+- **Learning:** "Store per-state workSeconds/breakSeconds so tick/switchPhase/reset derive from the state, not module constants, while keeping newState defaults at 25/5"
 - **Dependencies:** POM-001
 - **Non-scope:** UI controls, settings persistence, multiple presets
 
