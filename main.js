@@ -1,6 +1,6 @@
-// UI controller: wires controls, displays time, tallies sessions (POM-002/POM-004).
+// UI controller: wires controls, displays time, tallies sessions (POM-002/POM-004/POM-006).
 
-const state = newState();
+let state = newState();
 let totalSessions = parseInt(localStorage.getItem("pomodoroSessions") || "0", 10);
 let lastCompleted = state.completedSessions;
 
@@ -8,6 +8,13 @@ function format(seconds) {
   const m = Math.floor(seconds / 60);
   const s = seconds % 60;
   return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+}
+
+// Read the chosen work/break minutes from the duration controls.
+function readDurations() {
+  const work = parseInt(document.getElementById("work-minutes").value, 10) || 25;
+  const brk = parseInt(document.getElementById("break-minutes").value, 10) || 5;
+  return { work, brk };
 }
 
 // Persist completed sessions and refresh the tally.
@@ -43,10 +50,14 @@ let timerId = null;
 
 function startTimer() {
   if (timerId !== null) return;
+  const { work, brk } = readDurations();
+  state = newState(work, brk);
+  lastCompleted = state.completedSessions;
   timerId = setInterval(function () {
     tick(state);
     render();
   }, 1000);
+  render();
 }
 
 function pauseTimer() {

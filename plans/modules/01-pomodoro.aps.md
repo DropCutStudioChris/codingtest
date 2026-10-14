@@ -77,10 +77,11 @@ breaks, with controls and a served webpage.
 
 ### POM-006: Duration controls in the UI
 
-- **Status:** Draft
+- **Status:** Complete: 2026-10-14
 - **Intent:** Let the user change the work and break lengths from the page
 - **Expected Outcome:** The page exposes controls to set work and break lengths, applies them when a countdown starts, and displays the chosen durations
 - **Validation:** `python3 -m unittest tests.test_duration_controls`
+- **Learning:** "Read the duration inputs only at start time and rebuild state then, so the engine stays pure and render() never touches the DOM controls"
 - **Dependencies:** POM-005
 - **Non-scope:** Persisting the setting across reloads, multiple presets, cross-device sync
 
