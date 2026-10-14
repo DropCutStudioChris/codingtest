@@ -1,0 +1,2 @@
+{"kind":"witness","prev_line_hash":"GENESIS-FRESH","project_uuid":"01a13901-932a-70e6-aa33-c5ce0beaa469","scope":"active","seq":1,"ts":"2026-10-14T06:29:23Z","validation_at":"pre-commit"}
+{"kind":"witness","operation_id":"op_01M4WHKVER636ME7EWNSRKJHCZ","prev_line_hash":"6e3e7faebce4e36eb9e46ba4b63d7f7d13e1e4b9c723529514b1fbf0a27b38f5","project_uuid":"01a13901-932a-70e6-aa33-c5ce0beaa469","rules_sha":"fb02c6006d63a224ba0c8e029478dd4f06d02a037fde345eaf4cae4181151701","scope":"active","seq":2,"ts":"2026-10-14T06:29:23Z","validation_at":"pre-commit"}
