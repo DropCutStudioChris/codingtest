@@ -46,8 +46,9 @@ authorises work end-to-end.
 
 ## Open Questions
 
-- [ ] Should the work/break durations be user-configurable? (deferred — out of scope for the demo)
+- _(none open — the durations question was resolved, see D-002)_
 
 ## Decisions
 
 - **D-001:** Static single-page app, no framework — _decided_
+- **D-002:** Work/break durations are user-configurable — _decided_

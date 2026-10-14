@@ -65,11 +65,29 @@ breaks, with controls and a served webpage.
 - **Dependencies:** POM-001
 - **Non-scope:** Statistics dashboards, sound design, desktop notifications
 
-### POM-005: Configurable work and break durations
+### POM-005: Configurable durations in the engine
 
 - **Status:** Draft
-- **Intent:** Let the user customise the work and break lengths
-- **Expected Outcome:** The timer reads configurable durations (with 25/5 defaults) and uses them for countdowns
+- **Intent:** Let the countdown engine accept custom work and break lengths instead of fixed constants
+- **Expected Outcome:** The engine creates a timer with caller-supplied work/break durations, defaulting to 25/5 when none are given, and countdowns and phase switches use those durations
 - **Validation:** `python3 -m unittest tests.test_durations`
 - **Dependencies:** POM-001
-- **Non-scope:** Saving multiple presets, syncing settings across devices
+- **Non-scope:** UI controls, settings persistence, multiple presets
+
+### POM-006: Duration controls in the UI
+
+- **Status:** Draft
+- **Intent:** Let the user change the work and break lengths from the page
+- **Expected Outcome:** The page exposes controls to set work and break lengths, applies them when a countdown starts, and displays the chosen durations
+- **Validation:** `python3 -m unittest tests.test_duration_controls`
+- **Dependencies:** POM-005
+- **Non-scope:** Persisting the setting across reloads, multiple presets, cross-device sync
+
+### POM-007: Persist chosen durations
+
+- **Status:** Draft
+- **Intent:** Remember the user's chosen work and break lengths across reloads
+- **Expected Outcome:** The selected durations survive a page reload and are restored on load
+- **Validation:** `python3 -m unittest tests.test_duration_persistence`
+- **Dependencies:** POM-006
+- **Non-scope:** Multiple named presets, cross-device sync
