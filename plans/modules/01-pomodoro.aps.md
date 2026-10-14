@@ -8,7 +8,9 @@ ID: POM
 
 | ID  | Owner    | Status |
 | --- | -------- | ------ |
-| POM | @roostaa | Complete |
+| POM | @roostaa | In Progress |
+
+**Last reviewed:** 2026-10-14
 
 ## Purpose
 
@@ -62,3 +64,12 @@ breaks, with controls and a served webpage.
 - **Learning:** "Persist the tally in localStorage and cue on phase-change detection rather than timer events, so reloads and multi-tick boundaries stay correct"
 - **Dependencies:** POM-001
 - **Non-scope:** Statistics dashboards, sound design, desktop notifications
+
+### POM-005: Configurable work and break durations
+
+- **Status:** Draft
+- **Intent:** Let the user customise the work and break lengths
+- **Expected Outcome:** The timer reads configurable durations (with 25/5 defaults) and uses them for countdowns
+- **Validation:** `python3 -m unittest tests.test_durations`
+- **Dependencies:** POM-001
+- **Non-scope:** Saving multiple presets, syncing settings across devices
