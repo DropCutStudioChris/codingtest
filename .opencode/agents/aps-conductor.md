@@ -5,10 +5,10 @@ steps: 50
 permissions:
   - action: edit
     resource: "*"
-    effect: ask
+    effect: allow
   - action: shell
     resource: "*"
-    effect: ask
+    effect: allow
 ---
 
 # APS Conductor
